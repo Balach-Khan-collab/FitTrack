@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FitTrack – Diet Plans</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+ <a href="home.html" class="nav-brand">
+    <img src="images/logo.png" alt="FITTRACK Logo" class="logo-img">
+    <span class="nav-brand-text">FITTRACK</span>
+ </a>
+  <ul>
+    <li><a href="home.html">Dashboard</a></li>
+    <li><a href="workouts.html">Workouts</a></li>
+    <li><a href="bmi.html">BMI</a></li>
+    <li><a href="progress.html">Progress</a></li>
+    <li><a href="diet.html" class="active">Diet</a></li>
+    <li><a href="achievements.html">Achievements</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="btn btn-ghost" onclick="logout()"><i class="ti ti-logout"></i> Logout</button>
+  </div>
+</nav>
+
+<div class="container">
+
+  <a href="home.html" class="back-link"><i class="ti ti-arrow-left"></i> Dashboard</a>
+
+  <h1 class="page-title">Diet Plans</h1>
+  <p class="page-sub">Choose a nutrition strategy that matches your goals.</p>
+
+  <!-- Filter buttons -->
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;">
+    <button class="btn btn-primary diet-filter-btn" data-diet="muscle"     onclick="loadDiet('muscle')">
+      <i class="ti ti-barbell"></i> Muscle Gain
+    </button>
+    <button class="btn btn-ghost diet-filter-btn"   data-diet="weightloss" onclick="loadDiet('weightloss')">
+      <i class="ti ti-run"></i> Weight Loss
+    </button>
+    <button class="btn btn-ghost diet-filter-btn"   data-diet="normal"     onclick="loadDiet('normal')">
+      <i class="ti ti-salad"></i> Balanced
+    </button>
+  </div>
+
+  <div class="grid-2">
+
+    <!-- Food list -->
+    <div class="card">
+      <h2 style="margin-bottom:6px;" id="diet-title">Muscle Gain</h2>
+      <p style="font-size:13px;color:#666;margin-bottom:18px;" id="diet-desc">High-protein foods to support muscle growth and recovery.</p>
+      <div id="dietBox">
+        <p style="color:#555;font-size:13px;">Select a plan above.</p>
+      </div>
+    </div>
+
+    <!-- Tips -->
+    <div>
+      <div class="card" style="margin-bottom:14px;">
+        <h2 style="margin-bottom:14px;">General Tips</h2>
+        <div class="food-item"><i class="ti ti-droplet" style="color:#60a5fa;"></i> Drink 2–3 litres of water daily</div>
+        <div class="food-item"><i class="ti ti-clock" style="color:#fbbf24;"></i> Eat every 3–4 hours to keep metabolism active</div>
+        <div class="food-item"><i class="ti ti-moon" style="color:#a78bfa;"></i> Don't skip post-workout nutrition</div>
+        <div class="food-item"><i class="ti ti-leaf" style="color:#22c55e;"></i> Include fibre with every meal</div>
+        <div class="food-item"><i class="ti ti-ban" style="color:#ff0000;"></i> Limit processed food and added sugars</div>
+      </div>
+
+      <div class="card">
+        <h2 style="margin-bottom:14px;">Macros Guide</h2>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+              <span style="font-size:13px;color:#aaa;">Protein</span>
+              <span style="font-size:13px;color:#60a5fa;font-weight:600;">30–40%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:35%;background:#60a5fa;"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+              <span style="font-size:13px;color:#aaa;">Carbohydrates</span>
+              <span style="font-size:13px;color:#fbbf24;font-weight:600;">40–50%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:45%;background:#fbbf24;"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+              <span style="font-size:13px;color:#aaa;">Fats</span>
+              <span style="font-size:13px;color:#22c55e;font-weight:600;">20–30%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:25%;background:#22c55e;"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="js/auth.js"></script>
+<script src="js/diet.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    loadDiet("muscle");
+  });
+</script>
+</body>
+</html>

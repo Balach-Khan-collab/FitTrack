@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FitTrack – Progress</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+  <a href="home.html" class="nav-brand">
+    <img src="images/logo.png" alt="FITTRACK Logo" class="logo-img">
+    <span class="nav-brand-text">FITTRACK</span>
+ </a>
+  <ul>
+    <li><a href="home.html">Dashboard</a></li>
+    <li><a href="workouts.html">Workouts</a></li>
+    <li><a href="bmi.html">BMI</a></li>
+    <li><a href="progress.html" class="active">Progress</a></li>
+    <li><a href="diet.html">Diet</a></li>
+    <li><a href="achievements.html">Achievements</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="btn btn-ghost" onclick="logout()"><i class="ti ti-logout"></i> Logout</button>
+  </div>
+</nav>
+
+<div class="container">
+
+  <a href="home.html" class="back-link"><i class="ti ti-arrow-left"></i> Dashboard</a>
+
+  <h1 class="page-title">Your Progress</h1>
+  <p class="page-sub">Every workout you log is tracked here automatically.</p>
+
+  <div class="grid-2" style="gap:24px;margin-bottom:24px;">
+
+    <!-- Streak -->
+    <div class="card" style="text-align:center;padding:32px 20px;">
+      <i class="ti ti-flame" style="font-size:36px;color:#ff0000;display:block;margin-bottom:10px;"></i>
+      <div class="streak-num" id="streak">0</div>
+      <div class="streak-sub">Day Streak</div>
+    </div>
+
+    <!-- Workouts -->
+    <div class="card" style="text-align:center;padding:32px 20px;">
+      <i class="ti ti-barbell" style="font-size:36px;color:#ff0000;display:block;margin-bottom:10px;"></i>
+      <div class="streak-num" id="progressText">0</div>
+      <div class="streak-sub">Workouts Completed</div>
+    </div>
+
+  </div>
+
+  <div class="grid-2" style="gap:24px;">
+
+    <!-- Week overview -->
+    <div class="card">
+      <h2 style="margin-bottom:16px;">This Week</h2>
+      <div id="week-dots" class="day-dot-row"></div>
+      <p style="font-size:12px;color:#444;margin-top:14px;">Green = active day recorded.</p>
+    </div>
+
+    <!-- Activity log -->
+    <div class="card">
+      <h2 style="margin-bottom:4px;">Activity Log</h2>
+      <p style="font-size:12px;color:#555;margin-bottom:14px;">Your last 10 logged events.</p>
+      <div id="progress-log">
+        <p style="color:#555;font-size:13px;">No activity recorded yet.</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="js/auth.js"></script>
+<script src="js/progress.js"></script>
+</body>
+</html>

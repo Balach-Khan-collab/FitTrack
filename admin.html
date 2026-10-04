@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FitTrack – Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body id="adminPage">
+
+<nav>
+  <a href="home.html" class="nav-brand">
+    <img src="images/logo.png" alt="FITTRACK Logo" class="logo-img">
+    <span class="nav-brand-text">FITTRACK</span>
+ </a>
+  <ul>
+    <li><a href="home.html">Dashboard</a></li>
+    <li><a href="admin.html" class="active">Admin Panel</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="btn btn-ghost" onclick="logout()"><i class="ti ti-logout"></i> Logout</button>
+  </div>
+</nav>
+
+<div class="container">
+
+  <h1 class="page-title">Admin Panel</h1>
+  <p class="page-sub">Manage registered users. <span id="user-count" style="color:#ff0000;font-weight:600;">0</span> total accounts.</p>
+
+  <div class="section-heading"><i class="ti ti-users" style="color:#ff0000;"></i> Registered Users</div>
+
+  <div id="usersBox">
+    <p style="color:#555;font-size:14px;">Loading…</p>
+  </div>
+
+</div>
+
+<script src="js/auth.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

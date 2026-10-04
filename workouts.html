@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FitTrack – Workouts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/workout.css">
+</head>
+<body>
+
+<nav>
+  <a href="home.html" class="nav-brand">
+    <img src="images/logo.png" alt="FITTRACK Logo" class="logo-img">
+    <span class="nav-brand-text">FITTRACK</span>
+ </a>
+  <ul>
+    <li><a href="home.html">Dashboard</a></li>
+    <li><a href="workouts.html" class="active">Workouts</a></li>
+    <li><a href="bmi.html">BMI</a></li>
+    <li><a href="progress.html">Progress</a></li>
+    <li><a href="diet.html">Diet</a></li>
+    <li><a href="achievements.html">Achievements</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="btn btn-ghost" onclick="logout()"><i class="ti ti-logout"></i> Logout</button>
+  </div>
+</nav>
+
+<div class="container">
+
+  <h1 class="page-title">Workout Plans</h1>
+  <p class="page-sub">Choose your training level and mark exercises done as you complete them.</p>
+
+  <!-- LEVEL SELECTOR -->
+  <div id="wk-level-select" style="display:flex;">
+
+    <div class="card wk-level-card">
+      <div class="wk-level-icon"><i class="ti ti-flame"></i></div>
+      <div class="wk-level-info">
+        <h2>Beginner</h2>
+        <p>5 exercises per session · machine-friendly · lighter volume</p>
+      </div>
+      <button class="btn btn-primary wk-start-btn" onclick="startWorkout('beginner')">Start</button>
+    </div>
+
+    <div class="card wk-level-card">
+      <div class="wk-level-icon wk-icon-mod"><i class="ti ti-bolt"></i></div>
+      <div class="wk-level-info">
+        <h2>Moderate</h2>
+        <p>7–8 exercises · barbell & cable work · moderate volume</p>
+      </div>
+      <button class="btn btn-primary wk-start-btn" onclick="startWorkout('moderate')">Start</button>
+    </div>
+
+    <div class="card wk-level-card">
+      <div class="wk-level-icon wk-icon-adv"><i class="ti ti-skull"></i></div>
+      <div class="wk-level-info">
+        <h2>Advanced</h2>
+        <p>9–12 exercises · heavy compound lifts · high volume</p>
+      </div>
+      <button class="btn btn-primary wk-start-btn" onclick="startWorkout('advanced')">Start</button>
+    </div>
+
+  </div>
+
+  <!-- WORKOUT PANEL -->
+  <div id="wk-panel" style="display:none;">
+
+    <div class="wk-panel-header">
+      <button class="btn btn-ghost wk-back-btn" onclick="backToLevels()">
+        <i class="ti ti-arrow-left"></i> Levels
+      </button>
+      <h2 id="wk-level-title"></h2>
+    </div>
+
+    <div id="wk-tabs" class="wk-tabs"></div>
+    <div id="wk-day-content"></div>
+
+  </div>
+
+</div>
+
+<script src="js/auth.js"></script>
+<script src="js/workout.js"></script>
+</body>
+</html>

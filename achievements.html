@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FitTrack – Achievements</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+  <a href="home.html" class="nav-brand">
+    <img src="images/logo.png" alt="FITTRACK Logo" class="logo-img">
+    <span class="nav-brand-text">FITTRACK</span>
+ </a>
+  <ul>
+    <li><a href="home.html">Dashboard</a></li>
+    <li><a href="workouts.html">Workouts</a></li>
+    <li><a href="bmi.html">BMI</a></li>
+    <li><a href="progress.html">Progress</a></li>
+    <li><a href="diet.html">Diet</a></li>
+    <li><a href="achievements.html" class="active">Achievements</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="btn btn-ghost" onclick="logout()"><i class="ti ti-logout"></i> Logout</button>
+  </div>
+</nav>
+
+<div class="container">
+
+  <a href="home.html" class="back-link"><i class="ti ti-arrow-left"></i> Dashboard</a>
+
+  <h1 class="page-title">Achievements</h1>
+  <p class="page-sub">Milestones you've earned through consistency and hard work.</p>
+
+  <div id="ach-grid" class="ach-grid"></div>
+
+</div>
+
+<script src="js/auth.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  requireAuth();
+
+  const record = getUserRecord() || {};
+  const workouts = record.workoutsCompleted || 0;
+  const streak   = record.streakDays || 0;
+  const bmiCount = record.bmiHistory?.length || 0;
+
+  const all = [
+    {
+      icon: "🏋️",
+      title: "First Rep",
+      desc:  "Complete your very first workout.",
+      unlocked: workouts >= 1
+    },
+    {
+      icon: "🔥",
+      title: "On Fire",
+      desc:  "Maintain a 3-day streak.",
+      unlocked: streak >= 3
+    },
+    {
+      icon: "📊",
+      title: "Self-Aware",
+      desc:  "Check your BMI for the first time.",
+      unlocked: bmiCount >= 1
+    },
+    {
+      icon: "💪",
+      title: "Week Warrior",
+      desc:  "Complete 7 workouts.",
+      unlocked: workouts >= 7
+    },
+    {
+      icon: "🗓️",
+      title: "7-Day Streak",
+      desc:  "Train 7 days in a row.",
+      unlocked: streak >= 7
+    },
+    {
+      icon: "🏆",
+      title: "Consistent",
+      desc:  "Complete 25 workouts.",
+      unlocked: workouts >= 25
+    },
+    {
+      icon: "⚡",
+      title: "Advanced Lifter",
+      desc:  "Complete 50 workouts.",
+      unlocked: workouts >= 50
+    },
+    {
+      icon: "📈",
+      title: "BMI Tracker",
+      desc:  "Log your BMI 5 times.",
+      unlocked: bmiCount >= 5
+    },
+    {
+      icon: "🥇",
+      title: "Century",
+      desc:  "Complete 100 workouts.",
+      unlocked: workouts >= 100
+    }
+  ];
+
+  const grid = document.getElementById("ach-grid");
+  const unlocked = all.filter(a => a.unlocked).length;
+
+  // Update dashboard stat
+  try {
+    const s = getCurrentUser();
+    if (s) {
+      const users = getUsers();
+      const u = users[s.email];
+      if (u) {
+        // no-op: just reading
+      }
+    }
+  } catch(e) {}
+
+  grid.innerHTML = all.map(a => `
+    <div class="ach-card ${a.unlocked ? 'unlocked' : 'locked'}">
+      <span class="ach-badge ${a.unlocked ? '' : 'locked-badge'}">${a.unlocked ? 'Unlocked' : 'Locked'}</span>
+      <span class="ach-icon">${a.icon}</span>
+      <h3>${a.title}</h3>
+      <p>${a.desc}</p>
+    </div>
+  `).join("");
+
+  // show summary
+  const summary = document.createElement("p");
+  summary.style.cssText = "font-size:14px;color:#666;margin-bottom:24px;";
+  summary.textContent = `${unlocked} of ${all.length} achievements unlocked`;
+  document.querySelector(".page-sub").insertAdjacentElement("afterend", summary);
+});
+</script>
+</body>
+</html>

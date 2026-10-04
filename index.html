@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FitTrack – Sign In</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="login-page">
+
+  <!-- LEFT: hero side -->
+  <div class="hero-side">
+    <div class="hero-text">
+      <h1>FITTRACK</h1>
+      <p>Your complete gym companion.<br>Train smarter. Track everything.</p>
+      <div class="hero-tagline">
+        <span class="hero-tag"><i class="ti ti-barbell"></i> Workout Plans</span>
+        <span class="hero-tag"><i class="ti ti-activity"></i> Progress Tracking</span>
+        <span class="hero-tag"><i class="ti ti-salad"></i> Diet Plans</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: login/signup -->
+  <div class="login-side">
+    <div class="login-box">
+
+      <div class="logo-row">
+        <i class="ti ti-barbell" style="color:#ff0000;font-size:28px;"></i>
+        <span>FITTRACK</span>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <div id="login-form" class="auth-form active">
+        <h2>Welcome back</h2>
+        <p class="sub">Sign in to continue your training.</p>
+
+        <div id="login-error" class="alert alert-error" style="display:none;"></div>
+
+        <div class="input-group">
+          <label>Email</label>
+          <input id="email" type="email" placeholder="you@example.com" />
+        </div>
+
+        <div class="input-group">
+          <label>Password</label>
+          <input id="pass" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')login()" />
+        </div>
+
+        <button class="btn btn-primary btn-block" onclick="login()">
+          <i class="ti ti-login"></i> Sign In
+        </button>
+
+        <p style="font-size:12px;color:#555;text-align:center;margin-top:14px;">
+          Admin: admin123@ / admin123
+        </p>
+      </div>
+
+      <!-- SIGNUP FORM -->
+      <div id="signup-form" class="auth-form">
+        <h2>Create account</h2>
+        <p class="sub">Start tracking your fitness today.</p>
+
+        <div id="signup-error" class="alert alert-error" style="display:none;"></div>
+
+        <div class="input-group">
+          <label>Full Name</label>
+          <input id="name" type="text" placeholder="Your Name" />
+        </div>
+
+        <div class="input-group">
+          <label>Email</label>
+          <input id="signupEmail" type="email" placeholder="you@example.com" />
+        </div>
+
+        <div class="input-group">
+          <label>Password</label>
+          <input id="signupPass" type="password" placeholder="Min. 6 characters" />
+        </div>
+
+        <button class="btn btn-primary btn-block" onclick="signup()">
+          <i class="ti ti-user-plus"></i> Create Account
+        </button>
+      </div>
+
+      <p class="login-footer">By signing in you agree to our Terms of Service.</p>
+
+    </div>
+  </div>
+
+</div>
+
+<script src="js/auth.js"></script>
+<script>
+  // Redirect if already logged in
+  if (localStorage.getItem("currentUser")) {
+    window.location.href = "home.html";
+  }
+</script>
+</body>
+</html>

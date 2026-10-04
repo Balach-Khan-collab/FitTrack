@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FitTrack – BMI Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+ <a href="home.html" class="nav-brand">
+    <img src="images/logo.png" alt="FITTRACK Logo" class="logo-img">
+    <span class="nav-brand-text">FITTRACK</span>
+ </a>
+  <ul>
+    <li><a href="home.html">Dashboard</a></li>
+    <li><a href="workouts.html">Workouts</a></li>
+    <li><a href="bmi.html" class="active">BMI</a></li>
+    <li><a href="progress.html">Progress</a></li>
+    <li><a href="diet.html">Diet</a></li>
+    <li><a href="achievements.html">Achievements</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="btn btn-ghost" onclick="logout()"><i class="ti ti-logout"></i> Logout</button>
+  </div>
+</nav>
+
+<div class="container">
+
+  <a href="home.html" class="back-link"><i class="ti ti-arrow-left"></i> Dashboard</a>
+
+  <h1 class="page-title">BMI Calculator</h1>
+  <p class="page-sub">Calculate your Body Mass Index and track changes over time.</p>
+
+  <div class="grid-2">
+
+    <!-- Calculator -->
+    <div class="card">
+      <h2 style="margin-bottom:20px;">Your Measurements</h2>
+
+      <div id="bmi-error" class="alert alert-error" style="display:none;"></div>
+
+      <div class="input-group">
+        <label><i class="ti ti-weight"></i> Weight (kg)</label>
+        <input id="weight" type="number" placeholder="e.g. 75" min="1" max="300" />
+      </div>
+
+      <div class="input-group">
+        <label><i class="ti ti-ruler"></i> Height (cm)</label>
+        <input id="height" type="number" placeholder="e.g. 175" min="50" max="250" />
+      </div>
+
+      <button class="btn btn-primary btn-block" onclick="calcBMI()" style="margin-top:8px;">
+        <i class="ti ti-calculator"></i> Calculate BMI
+      </button>
+
+      <!-- BMI scale reference -->
+      <div style="margin-top:24px;">
+        <div style="font-size:12px;color:#555;margin-bottom:8px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;">BMI Scale</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;">
+          <div style="background:rgba(96,165,250,.12);border:1px solid rgba(96,165,250,.2);border-radius:6px;padding:8px;text-align:center;">
+            <div style="font-size:11px;font-weight:600;color:#60a5fa;">&lt; 18.5</div>
+            <div style="font-size:10px;color:#555;margin-top:2px;">Underweight</div>
+          </div>
+          <div style="background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);border-radius:6px;padding:8px;text-align:center;">
+            <div style="font-size:11px;font-weight:600;color:#22c55e;">18.5–24.9</div>
+            <div style="font-size:10px;color:#555;margin-top:2px;">Normal</div>
+          </div>
+          <div style="background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.2);border-radius:6px;padding:8px;text-align:center;">
+            <div style="font-size:11px;font-weight:600;color:#fbbf24;">25–29.9</div>
+            <div style="font-size:10px;color:#555;margin-top:2px;">Overweight</div>
+          </div>
+          <div style="background:rgba(255,0,0,.08);border:1px solid rgba(255,0,0,.2);border-radius:6px;padding:8px;text-align:center;">
+            <div style="font-size:11px;font-weight:600;color:#ff0000;">&ge; 30</div>
+            <div style="font-size:10px;color:#555;margin-top:2px;">Obese</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Result + History -->
+    <div>
+      <!-- Result box -->
+      <div id="bmiResult" class="bmi-result-box card">
+        <div class="bmi-number" id="bmi-number">—</div>
+        <div class="bmi-category" id="bmi-category"></div>
+        <div class="bmi-advice" id="bmi-advice"></div>
+      </div>
+
+      <!-- History -->
+      <div class="card" style="margin-top:16px;">
+        <h2 style="margin-bottom:16px;">BMI History</h2>
+        <div id="bmi-history">
+          <p style="color:#555;font-size:13px;">No records yet.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="js/auth.js"></script>
+<script src="js/bmi.js"></script>
+</body>
+</html>
